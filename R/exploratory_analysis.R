@@ -130,3 +130,8 @@ plot(raster_stack[[1]], main = "First Raster Layer with Clusters")
 
 # Overlay the cluster results
 points(df_cluster$x, df_cluster$y, col = df_cluster$kshape_cluster, pch = 16, cex = 0.5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 6.0 Export --------------------------------------------------------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+write_csv(df_cluster,"output/k_shape_clusters.csv")
