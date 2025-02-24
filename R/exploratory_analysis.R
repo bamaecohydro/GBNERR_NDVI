@@ -118,6 +118,19 @@ df_cluster %>%
        x = "Year", y = "NDVI",
        color = "Cluster") 
 
+# Visualize the clusters on a map using ggplot2
+df_cluster %>%
+  group_by(kshape_cluster, year) %>%
+  summarise(NDVI_IQR = quantile(NDVI,0.75)-quantile(NDVI,0.25)) %>%
+  mutate(year = as.numeric(year)) %>% 
+  ggplot(aes(x = year, y = NDVI_IQR, color = as.factor(kshape_cluster))) +
+  geom_line() +
+  geom_point() +
+  theme_classic() +
+  labs(title = "IQR NDVI Time Series by Cluster",
+       x = "Year", y = "NDVI",
+       color = "Cluster") 
+
 #Plot on map
 df_cluster %>% 
   select(x,y,kshape_cluster) %>% 
